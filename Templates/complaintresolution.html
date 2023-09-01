@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+- Complaint Resolution
+{% endblock title %}
+
+{% block body %}
+<body style="background-image: none;background-color: black;">
+<form action="" method="post">
+    {% csrf_token %}
+    <table class="table table-bordered table-striped table-hover table-dark">{{myForm}}</table>
+    <div class="row">
+<div class="col text-center">
+    <input type="submit" value="Submit" class="btn btn-warning">
+</div>
+</div>
+</form>
+
+</body>
+
+
+
+
+
+{% endblock body %}

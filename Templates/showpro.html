@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    - product List
+{% endblock title %}
+    
+
+{% block body %}
+
+{% for msg in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>{{msg}}</strong>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+{% endfor %}
+
+
+    <table class="table table-dark table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Desciption</th>
+                <th>Image</th>
+                <th>Category</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for o in obj %}
+            <tr>
+                <td>{{o.productId}}</td>
+                <td>{{o.productName}}</td>
+                <td>{{o.price}}</td>
+                <td>{{o.description}}</td>
+                <td>{{o.productimage}}</td>
+                <td>{{o.productCategory}}</td>
+                <td><a href="{% url 'updatepro' id=o.productId %}"><button class="btn btn-warning">Update</button></a></td>
+                <td><a href="{% url 'delpro' id=o.productId %}"><button class="btn btn-danger">Delete</button></a></td>
+            </tr>
+            {% endfor %}
+                
+        </tbody>
+    </table>
+{% endblock body %}
+    

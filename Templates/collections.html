@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    - Categories
+{% endblock title %}
+    
+
+
+{% block body %}
+<body style="background-image: none; background-color: blanchedalmond;">
+    <div class="container-fluid">
+        <a href="/" class="text-dark" style="text-decoration:none;">Home / </a>
+        <a href="collections" class="text-dark" style="text-decoration:none;">Collections</a>
+    </div>
+    <h2 class="text-center bg-secondary">Categories & Collections</h2>
+<div class="row justify-content-between text-center pt-4">
+    
+    {% for msg in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>{{msg}}</strong>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {% endfor %}
+
+    {% for md in mydata %}
+        <div class="col-md-4">
+            <a href="{% url 'prolistbycat' id=md.productCategoryId %}" style="text-decoration: none; color:black">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ md.categoryImages.url }}" class="card-img-top" alt="not found" height="150px">
+                <div class="card-body bg-warning">
+                  <h3>{{md.productCategoryName}}</h3></div>      
+            </a>
+            </div>
+            <br><br>
+        </div>
+    {% endfor %}
+</body>
+
+</div>
+
+
+
+
+{% endblock body %}
+    

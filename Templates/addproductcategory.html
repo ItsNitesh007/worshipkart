@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block title %} Add Categories {% endblock title %}
+{% block body %}
+
+<form action="" method="post" class="form-select form-select-lg">
+  
+    {% csrf_token %}
+
+  <table>
+    {% for msg in messages %} 
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{msg}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+     
+    {% endfor %} 
+    {{ myform }}
+  </table>
+
+  <input type="submit" value="Create" class="btn btn-info" />
+</form>
+
+{% endblock body %}

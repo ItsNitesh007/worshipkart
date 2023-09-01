@@ -1,0 +1,47 @@
+{% extends 'base.html' %} 
+
+{% block title %}
+-Complaint Status 
+{% endblock title%} 
+
+{% block body %}
+
+<table class="table table-bordered table-striped table-hover table-dark text-center">
+  <thead>
+    <tr>
+      <th>Complaint ID</th>
+      <th>Date</th>
+      <th>Type</th>
+      <th>Status</th>
+      <th>Description</th>
+      <th>Response</th>
+      <th>Response Date</th>
+      {% if 'Admin' in request.session.userType %}
+      <th>Respond</th>
+      {% endif %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for dt in data %}
+    <tr>
+      <td>{{dt.complaintID}}</td>
+      <td>{{dt.complaintDate}}</td>
+      <td>{{dt.complaintType}}</td>
+      <td>{{dt.complaintStatus}}</td>
+      <td>{{dt.issue}}</td>
+      <td>{{dt.response}}</td>
+      <td>{{dt.responseDate}}</td>
+      {% if 'Admin' in request.session.userType %}
+      <td>
+        <a href="{% url 'respondcomplaint' id=dt.complaintID %}"
+          ><button class="btn btn-outline-danger">Respond</button></a
+        >
+      </td>
+      {% endif %}
+    </tr>
+
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock body %}

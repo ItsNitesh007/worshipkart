@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    - {{obj.productName}}
+{% endblock title %}
+    
+
+{% block body %}
+<body style="background-image: none;">
+  
+
+<div class="row justify-content-around">
+<div class="card col-md-6">
+    <img src="{{obj.productimage.url}}" class="card-img-top" alt="Image not found">
+    <div class="card-body">
+      <h5 class="card-title">{{obj.productName}}</h5>
+      <p class="card-text" id="cardtext">{{obj.description}}</p>
+      <h3 class="card-text" id="cardtext">{{obj.price}}</h3>
+    </div>
+  </div>
+<div class="col-md-3">
+  <h3 class="pt-5">{{obj.price}}</h3>
+  <p style="color:firebrick">FREE DELIVERY on Orders above Rs. 499</p>
+  <p style="color: green;">In Stock</p>
+  <label for="quantity" class="pt-2 pb-4">Please select Quantity</label>
+  <select name="quantity" id="quantity">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select>
+  <a href="" class="pt-2"><button class="btn btn-outline-success">Add to Cart <i class="bi bi-cart-check-fill"></i></button></a>
+</div>
+
+  <!-- row closing -->
+</div>
+</body>
+
+{% endblock body %}
+    

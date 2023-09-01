@@ -1,0 +1,82 @@
+{% extends 'base.html' %} 
+
+{% block title %} 
+- {{obj.productName}} 
+{% endblock title %} 
+
+{% block body %}
+<body style="background-image: none">
+  <div class="row justify-content-around">
+    <div class="card col-md-6">
+      <img
+        src="{{obj.productimage.url}}"
+        class="card-img-top"
+        alt="Image not found"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{obj.productName}}</h5>
+        <p class="card-text" id="cardtext">{{obj.description}}</p>
+        <h3 class="card-text" id="cardtext">{{obj.price}}</h3>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <h3 class="pt-5">{{obj.price}}</h3>
+      <p style="color: firebrick">FREE DELIVERY on Orders above Rs. 499</p>
+
+      {% if 'Buyer' in request.session.userType %}
+
+      <form method="post" action="{% url 'addtocart' %}">
+        {% csrf_token %}
+      
+      <div class="input-group mb-3">
+        <input type="text" name="proid" id="proid" value="{{obj.productId}}" hidden/>
+        <button class="btn btn-lg btn-danger" type="button" id="button-sub1" onclick="subtraction()">
+          -
+        </button>
+        <input
+          type="text" class="form-control text-center" value="1" aria-label="Example text with button addon" aria-describedby="button-addon1" id="countinput" name="countinput" readonly/>
+        <button class="btn btn-lg btn-warning" type="button" id="button-addon1" onclick="addition()">
+          +
+        </button>
+      </div>
+        <input type="submit" value="Add to Cart" class="btn btn-outline-success">
+      </form>
+
+      {% else %}
+      <a href="{% url 'signin' %}"
+        ><button class="btn btn-warning" type="submit">Login</button></a
+      >
+      <br />
+      <p>Not a member? <a href="{% url 'register' %}">Register</a></p>
+      {% endif %}
+    </div>
+
+    <!-- row closing -->
+  </div>
+</body>
+
+<script>
+  var1=document.getElementById('countinput').value;
+  function addition(){
+    var1++;
+    document.getElementById('countinput').value=var1;
+
+  }
+
+  function subtraction(){
+    var1--;
+    if(var1<1){
+      alert('Quantity cannot be less than 1')
+      var1=1;
+      document.getElementById('countinput').value=var1;
+    }
+    else{
+      document.getElementById('countinput').value=var1;
+    }
+  }
+
+  qty=document.getElementById('countinput').value;
+
+</script>
+
+{% endblock body %}

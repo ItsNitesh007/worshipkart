@@ -1,0 +1,19 @@
+{% extends 'base.html' %} 
+{% block title %} - Update Category {% endblock title%} 
+{% block body %}
+
+<form method="post" class="form-select form-select-lg">
+  {% csrf_token %}
+
+  <table class="table table-striped table-hover table-info table-warning">
+    {{myForm}}
+  </table>
+  <input type="submit" value="Update" class="btn btn-warning" />
+</form>
+
+<script>
+  document
+    .getElementsByName("productCategoryId")[0]
+    .setAttribute("readonly", "true");
+</script>
+{% endblock body %}

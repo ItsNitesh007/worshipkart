@@ -1,0 +1,147 @@
+{% extends 'base.html' %} 
+{% block title %} Register {% endblock title %} 
+
+{% block body %}
+<body
+  class="text-center"
+  data-new-gr-c-s-check-loaded="14.1119.0"
+  data-gr-ext-installed=""
+  style="
+    background-image: linear-gradient(to bottom, rgb(134, 134, 207), white);
+  "
+>
+  <main class="w-100 m-auto" style="max-width: 330px; padding: 15px">
+    <form method="post">
+      {% csrf_token %}
+      <!-- 2 column grid layout with text inputs for the first and last names -->
+      <div class="row mb-4">
+        <div class="col">
+          <div class="form-outline">
+            <input
+              type="text"
+              id="form3Example1"
+              class="form-control"
+              name="firstname"
+              required
+            />
+            <label class="form-label" for="form3Example1">First name</label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-outline">
+            <input
+              type="text"
+              id="form3Example2"
+              class="form-control"
+              name="lastname"
+            />
+            <label class="form-label" for="form3Example2">Last name</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile -->
+      <div class="form-outline mb-4">
+        <input
+          type="tel"
+          id="form3Example3"
+          class="form-control"
+          name="phone"
+          required
+        />
+        <label class="form-label" for="form3Example3">Contact Number</label>
+      </div>
+
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <input
+          type="email"
+          id="form3Example3"
+          class="form-control"
+          name="email"
+          required
+        />
+        <label class="form-label" for="form3Example3">Email address</label>
+      </div>
+
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        <input
+          type="password"
+          id="form3Example4"
+          class="form-control"
+          name="password1"
+          required
+          onblur="validatePassword()"
+        />
+        <p id="passwordMessage"></p>
+        <label class="form-label" for="form3Example4">Password</label>
+      </div>
+
+      <!-- Checkbox -->
+      <div class="form-check d-flex justify-content-center mb-4">
+        <input
+          class="form-check-input me-2"
+          type="checkbox"
+          value="True"
+          id="form2Example33"
+          checked
+          name="chk"
+        />
+        <label class="form-check-label" for="form2Example33">
+          Subscribe to our newsletter
+        </label>
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary btn-block mb-4">
+        Sign up
+      </button>
+
+      <!-- Register buttons -->
+      <div class="text-center">
+        <p>or sign up with:</p>
+        <button type="button" class="btn btn-secondary btn-floating mx-1">
+          <i class="fab fa-facebook-f"></i>
+        </button>
+
+        <button type="button" class="btn btn-secondary btn-floating mx-1">
+          <i class="fab fa-google"></i>
+        </button>
+
+        <button type="button" class="btn btn-secondary btn-floating mx-1">
+          <i class="fab fa-twitter"></i>
+        </button>
+
+        <button type="button" class="btn btn-secondary btn-floating mx-1">
+          <i class="fab fa-github"></i>
+        </button>
+      </div>
+    </form>
+  </main>
+</body>
+
+<script>
+  function validatePassword() {
+    // Get the input element and its value
+    var passwordInput = document.getElementById("form3Example4");
+    var password = passwordInput.value;
+
+    // Define a regular expression pattern for password validation
+    var passwordPattern =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/;
+
+    // Check if the password matches the pattern
+    if (passwordPattern.test(password)) {
+      document.getElementById("passwordMessage").innerHTML =
+        "Password is valid.";
+      passwordMessage.style.color = "green";
+    } else {
+      document.getElementById("passwordMessage").innerHTML =
+        "Password is invalid. It must contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character, and be between 8 to 15 characters.";
+      passwordMessage.style.color = "red";
+    }
+  }
+</script>
+
+{% endblock body %}

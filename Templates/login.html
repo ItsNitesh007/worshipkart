@@ -1,0 +1,98 @@
+{% extends 'base.html' %} 
+
+{% block title %} 
+Login 
+{% endblock title %} 
+
+{% block body %}
+
+<body
+  class="text-center"
+  data-new-gr-c-s-check-loaded="14.1119.0"
+  data-gr-ext-installed=""
+  style="
+    background-image: linear-gradient(to bottom, rgb(134, 134, 207), white);
+  "
+>
+  <main class="w-100 m-auto" style="max-width: 330px; padding: 15px">
+    <form method="post">
+      {% csrf_token %}
+
+      <img
+        class="mb-4"
+        src="../static/favicon.png"
+        alt=""
+        width="100"
+        height="72"
+      />
+
+      {% for msg in messages %}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>{{msg}}</strong>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+      {% endfor %}
+
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+      <div class="form-floating">
+        <input
+          type="email"
+          class="form-control"
+          id="floatingInput"
+          placeholder="name@example.com"
+          name="email"
+          required
+        />
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input
+          type="password"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Password"
+          name="password1"
+          required
+        />
+
+        <label for="floatingPassword">Password</label>
+      </div>
+
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me" /> Remember me
+        </label>
+      </div>
+      <button class="w-100 btn btn-lg btn-danger" type="submit">Sign in</button>
+      <!-- Register buttons -->
+      <div class="text-center">
+        <p>Not a member? <a href="{% url 'register' %}">Register</a></p>
+        <p>or sign up with:</p>
+        <button type="button" class="btn btn-secondary btn-floating mx-1">
+          <i class="fab fa-facebook-f"></i>
+        </button>
+
+        <button type="button" class="btn btn-secondary btn-floating mx-1">
+          <i class="fab fa-google"></i>
+        </button>
+
+        <button type="button" class="btn btn-secondary btn-floating mx-1">
+          <i class="fab fa-twitter"></i>
+        </button>
+
+        <button type="button" class="btn btn-secondary btn-floating mx-1">
+          <i class="fab fa-github"></i>
+        </button>
+      </div>
+      <p class="mt-5 mb-3 text-muted">© 2017–2023</p>
+    </form>
+  </main>
+</body>
+
+{% endblock body %}

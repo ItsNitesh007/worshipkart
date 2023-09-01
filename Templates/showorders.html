@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+- Orders
+{% endblock title %}
+
+{% block body %}
+<table class="table table-bordered table-striped table-hover table-dark text-center">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Date</th>
+            <th>Price</th>
+            <th>Mode</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for dt in data %}
+        <tr>
+            <td>{{dt.orderId}}</td>
+            <td>{{dt.orderDate}}</td>
+            <td>{{dt.orderPrice}}</td>
+            <td>{{dt.paymentMode}}</td>
+            <td>{{dt.address}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock body %}

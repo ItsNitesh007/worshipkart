@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}WorshipCart - Checkout {% endblock title %}
+
+{% block body %}
+<form method="post" class="bg-warning">
+    {% csrf_token %}
+    <h3 class="text-center bg-info">Please fill out below details to proceed further</h3>
+<table>{{myForm}}</table>
+<input type="submit" value="Checkout" class="btn btn-danger">
+</form>
+
+{% endblock body %}

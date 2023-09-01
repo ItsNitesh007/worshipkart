@@ -1,0 +1,19 @@
+{% extends 'base.html' %} 
+{% block title %} 
+-Complaint received 
+{% endblock title %} 
+
+{% block body %}
+<div class="row justify-content-evenly pt-5">
+<div class="col-md-6">
+  <div class="h-100 p-5 text-bg-dark rounded-3">
+    <h2>Complaint received</h2>
+    <p>
+      'Thanks for letting us know. Our email will resolve your complaint within
+      next 2 business working days. Thanks again...'
+    </p>
+    <a href="{% url 'collections' %}"><button class="btn btn-outline-warning btn-lg">Home</button></a>
+  </div>
+</div>
+</div>
+{% endblock body %}
